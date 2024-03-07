@@ -3,7 +3,7 @@ import type { DefaultThemeOptions } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
 
 export default defineUserConfig({
-  title: "脑子像个小风扇，转啊转啊...",
+  title: "脑瓜像个小风扇，转啊转啊...",
   description: "Facing the Ocean, Spring and Blossom",
   base: '/jaun.github.io/',
   theme: recoTheme({
@@ -12,9 +12,9 @@ export default defineUserConfig({
     author: "Jaun",
     authorAvatar: "/head.png",
     docsBranch: "main",
-    lastUpdatedText: false,
+    lastUpdatedText: "",
     autoSetBlogCategories: true,
-    search: false, // 禁用搜索
+    lastUpdated: false,
     // series 为原 sidebar
     series: {
       "/blogs": [
