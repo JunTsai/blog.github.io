@@ -1,11 +1,10 @@
 import { defineUserConfig } from "vuepress";
-import type { DefaultThemeOptions } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
 
 export default defineUserConfig({
   title: "脑瓜像个小风扇，转啊转啊...",
   description: "Facing the Ocean, Spring and Blossom",
-  base: '/jaun.github.io/',
+  base: '/blog.github.io/',
   theme: recoTheme({
     style: "@vuepress-reco/style-default",
     logo: "/logo.png",

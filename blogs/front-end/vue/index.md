@@ -7,4 +7,5 @@ tags:
 ---
 
 ## vue2 原理系列
-[vue2响应式原理](/blogs/front-end/vue/observer.md)
+[响应式原理](/blogs/front-end/vue/2-observer.md)
+[依赖收集&异步更新](/blogs/front-end/vue/2-dep-next.md)
