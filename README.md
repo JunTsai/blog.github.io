@@ -23,5 +23,3 @@ isShowTitleInHome: true
 # actionLink: /views/other/about
 ---
 
-## 欢迎访问我的博客，这里记录着工作和读书。
-

@@ -2,7 +2,8 @@
 title: Vue的一系列文章
 date: 2023/12/15
 tags:
- - vue2 vue3
+ - vue2
+ - vue3
 ---
 
 ## vue2 原理系列
