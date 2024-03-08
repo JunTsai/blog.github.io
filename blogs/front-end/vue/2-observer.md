@@ -2,7 +2,7 @@
 title: 响应式系统
 date: 2018/12/15
 tags:
-  - vue
+  - vue2
 categories:
   - front-end
   - vue
