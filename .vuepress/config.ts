@@ -43,8 +43,8 @@ export default defineUserConfig({
         text: "FrontEnd",
         children: [
           { text: "Vue", link: "/blogs/front-end/vue/2/2-observer" },
-          { text: "Node", link: "/blogs/front-end/node/" },
-          { text: "React", link: "/blogs/front-end/react/" },
+          // { text: "Node", link: "/blogs/front-end/node/" },
+          { text: "React", link: "/blogs/front-end/react/hook" },
           { text: "Writing", link: "/blogs/front-end/writing/array" },
           { text: "Engineering", link: "/blogs/front-end/engineering/webpack/total" },
         ]
@@ -52,7 +52,7 @@ export default defineUserConfig({
       {
         text: "BackEnd",
         children: [
-          { text: "Java", link: "/blogs/back-end/java/" },
+          { text: "Java", link: "/blogs/back-end/java/model" },
         ]
       },
       {

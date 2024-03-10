@@ -3,7 +3,7 @@ const java = {
   children: [
     {
       text: "webpack4一些总结",
-      link: "/blogs/front-end/engineering/webpack/total"
+      link: "/blogs/back-end/java/model"
     },
   ],
   collapsible: false
