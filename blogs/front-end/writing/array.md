@@ -1,6 +1,6 @@
-# 常用数组方法的原理
+## 常用数组方法的原理
 
-## forEach
+### forEach
 ```javascript
 Array.prototype.myForEach = function(callback, cn = global || window) {
   let self = this,
@@ -15,7 +15,7 @@ Array.prototype.myForEach = function(callback, cn = global || window) {
 }
 
 ```
-## filter
+### filter
 ```javascript
 Array.prototype.myFilter = function(callback, cn = global || window) {
   let len = this.length,
@@ -32,7 +32,7 @@ Array.prototype.myFilter = function(callback, cn = global || window) {
 }
 
 ```
-## find、findIndex
+### find、findIndex
 ```javascript
 Array.prototype.myFind = function(callback, cn = global || window) {
   let len = this.length,
@@ -49,7 +49,7 @@ Array.prototype.myFind = function(callback, cn = global || window) {
 }
 
 ```
-## map
+### map
 ```javascript
 //  [1,2,3,4].map((curr,index,arr))
 Array.prototype.myMap = function(callback, cn = global || window) {
@@ -67,7 +67,7 @@ Array.prototype.myMap = function(callback, cn = global || window) {
 }
 
 ```
-## reduce
+### reduce
 ```javascript
 // [1,2,3,4].reduce((initVal,curr,index,arr) => {}, [])
 Array.prototype.myReduce = function(fn, initVal) {
@@ -84,7 +84,7 @@ Array.prototype.myReduce = function(fn, initVal) {
   return res
 }
 ```
-## flat 拍平数组
+### flat 拍平数组
 ```javascript
 // 简单版本
 const myFlat = function(arr, depth = 1) {

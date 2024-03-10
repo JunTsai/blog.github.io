@@ -1,5 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
+import fontend from './public/route/fontend'
+import read from "./public/route/reading";
 
 export default defineUserConfig({
   title: "脑瓜转啊转啊...",
@@ -12,35 +14,26 @@ export default defineUserConfig({
     authorAvatar: "/head.png",
     docsBranch: "main",
     lastUpdatedText: "",
-    autoSetBlogCategories: true,
+    autoSetBlogCategories: false,
     lastUpdated: false,
-    // series 为原 sidebar
     series: {
       "/blogs": [
         {
           text: "前端技术栈",
-          children: [
-            { text: "Vue", link: "/blogs/front-end/vue/" },
-            { text: "Vite", link: "/blogs/front-end/vite/" },
-            { text: "Http", link: "/blogs/front-end/http/" },
-            { text: "Node", link: "/blogs/front-end/node/" },
-            { text: "React", link: "/blogs/front-end/react/" },
-            { text: "Chrome", link: "/blogs/front-end/chrome/" },
-            { text: "Writing", link: "/blogs/front-end/writing/" },
-            { text: "Webapck", link: "/blogs/front-end/webapck/" },
-          ]
+          children: [...fontend],
+          collapsible: false,
         },
         {
           text: "后端技术栈",
           children: [
             { text: "Java", link: "/blogs/back-end/java/" },
           ],
+          collapsible: false
         },
         {
           text: "读会书",
-          children: [
-            { text: "传习录", link: "/blogs/reading/cxl/" },
-          ],
+          children: [ read ],
+          collapsible: false
         },
       ],
     },
@@ -49,14 +42,11 @@ export default defineUserConfig({
       {
         text: "FrontEnd",
         children: [
-          { text: "Vue", link: "/blogs/front-end/vue/" },
-          { text: "Vite", link: "/blogs/front-end/vite/" },
-          { text: "Http", link: "/blogs/front-end/http/" },
+          { text: "Vue", link: "/blogs/front-end/vue/2/2-observer" },
           { text: "Node", link: "/blogs/front-end/node/" },
           { text: "React", link: "/blogs/front-end/react/" },
-          { text: "Chrome", link: "/blogs/front-end/chrome/" },
-          { text: "Writing", link: "/blogs/front-end/writing/" },
-          { text: "Webapck", link: "/blogs/front-end/webapck/" },
+          { text: "Writing", link: "/blogs/front-end/writing/array" },
+          { text: "Engineering", link: "/blogs/front-end/engineering/webpack/total" },
         ]
       },
       {
@@ -68,7 +58,7 @@ export default defineUserConfig({
       {
         text: "Reading",
         children: [
-          { text: "传习录", link: "/reading/chuanxilu/" },
+          { text: "传习录", link: "/blogs/reading/cxl/" },
         ]
       }
     ],

@@ -1,6 +1,7 @@
 ---
 title: diff过程
 date: 2018/12/20
+sidebar: 'auto'
 tags:
   - vue2
 categories:
