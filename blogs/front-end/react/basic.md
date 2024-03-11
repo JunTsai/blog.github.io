@@ -11,7 +11,7 @@ function App() {
   return <h2>hello world</h2>
 }
 ```
->h2也是一个组件，是React内置的组件，准确说这个组件时React.`Intrinsic`Elements.h2;Intrinsic(内部)的
+>h2也是一个组件，是React内置的组件，准确说这个组件React.`Intrinsic`Elements.h2;Intrinsic(内部)的
 
 
 - **属性就是函数的参数：** `JSX=f(props)`
@@ -28,8 +28,7 @@ function App() {
 
 ### 组合和列表关系
 
-- **组合关系：** `多个组件组成一个`。
-React用JSX直接实现组合关系，很直观！
+- **组合关系：** `多个组件组成一个`。React用JSX直接实现组合关系，很直观！
 
 - **数据映射成列表**
 ```javascript

@@ -3,6 +3,10 @@ const Vue2 = {
   collapsible: false,
   children: [
     {
+      text: "React基础概念",
+      link: "/blogs/front-end/react/basic"
+    },
+    {
       text: "Hook的理解",
       link: "/blogs/front-end/react/hook"
     },

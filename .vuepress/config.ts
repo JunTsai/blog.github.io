@@ -4,7 +4,7 @@ import fontend from './public/route/fontend'
 import read from "./public/route/reading";
 
 export default defineUserConfig({
-  title: "脑瓜转啊转啊...",
+  title: "脑瓜转啊转...",
   description: "Facing the Ocean, Spring and Blossom",
   base: '/blog.github.io/',
   theme: recoTheme({
@@ -44,7 +44,7 @@ export default defineUserConfig({
         children: [
           { text: "Vue", link: "/blogs/front-end/vue/2/2-observer" },
           // { text: "Node", link: "/blogs/front-end/node/" },
-          { text: "React", link: "/blogs/front-end/react/hook" },
+          { text: "React", link: "/blogs/front-end/react/basic" },
           { text: "Writing", link: "/blogs/front-end/writing/array" },
           { text: "Engineering", link: "/blogs/front-end/engineering/webpack/total" },
         ]
