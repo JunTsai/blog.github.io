@@ -2,7 +2,7 @@
 
 ### 双线程架构
 微信小程序的渲染层与逻辑层分别由两个线程管理，渲染层的界面使用 `webview` 进行渲染；逻辑层采用 `JSCore运行JavaScript代码。`
-![avatar](/.vuepress/public/image/m1.png)
+![avatar]()
 - **渲染层**
   - 一个小程序有多个界面，所以渲染层对应存在多个`webview`.两个线程之间由`Native层`进行统一处理。无论是线程之间的通讯、数据的传递、网络请求都由`Native层`做转发。
   - 为什么要做多个webview呢，为了更加接近原生应用APP的用户体验。多个webview可以理解为多页面应用，有别于单页面应用SPA.多页面应用的新页面直接滑动出来并且覆盖在旧页面上即可，这样的用户体验是非常好的。
@@ -13,7 +13,7 @@
 ### WXML标签设计思路
 
 - **WXML语法结构**
-![avater](/.vuepress/public/image/m2.png)
+![avater]()
   - 行内属性
   > id
   style
