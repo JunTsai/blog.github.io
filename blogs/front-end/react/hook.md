@@ -39,9 +39,51 @@ function Foo() {
 - 而useState，是一个反向的hook，当用户设置状态变更的时候，会反向触发React的更新;
 
 ### API
-- useState
+- **useState**
+> 作用： 管理状态，并当状态发生变化的时候,反向通知React重绘
+通知方向： state hook -> React Component -> render
+```ts
+import { useState } from "react";
+
+export default function () {
+  // const [count, setCount] = useState(0)
+  // const [count, setCount] = useState<number>(0)
+  const [count, setCount] = useState(() => 0)
+
+  return <div>
+    {count}
+    {/* x => x + 1 这种写法不存在竞争条件问题，他不是一个闭包中去读一个值 */}
+    <button onClick={() => setCount(x => x +1 )}>+</button>
+  </div>
+ 
+}
+```
+总结：useState可以解成react之外的空间的状态，在向react内部通知的一个方式。其实是一个dispatch函数，为什么呢? 以为它其是在派发。
 - useEffect
+> 这个hook是当react的渲染的时候，这个hook的函数会根据依赖变化而发生调用。
+这个方法一开始都会执行一次，可以用来做什么？当做它的一个组件的一个挂载的一个生命周期和的一个钩子来用。
+不能写在if等条件语句下，原因其实是react通过它对这个组件的声明，就像声明这个组件拥有什么样的功能一样。
 - useRef
+> useRef hook 是React提供的一个用于在函数组件中创建可变的引用的hook。它返回一个可变的ref对象，该对象的current属性被初始化为传入的参数。useRef主要用于在函数组件中保存持久化的值，这些值可以在多次渲染之间保持不变。
+```ts
+import React, { useRef } from 'react';
+
+function TextInputWithFocusButton() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleClick}>Focus the input</button>
+    </div>
+  );
+}
+
+```
 - useMemo
 - useCallback
 - useContext

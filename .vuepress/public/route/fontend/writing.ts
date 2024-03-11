@@ -9,6 +9,10 @@ const writing = {
     {
       text: "错误处理",
       link: "/blogs/front-end/writing/error"
+    },
+    {
+      text: "小程序框架原理",
+      link: "/blogs/front-end/writing/miniprogress"
     }
   ],
 }
