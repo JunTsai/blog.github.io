@@ -1,6 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
 import fontend from './public/route/fontend'
+import backend from './public/route/backend'
 import read from "./public/route/reading";
 
 export default defineUserConfig({
@@ -25,9 +26,7 @@ export default defineUserConfig({
         },
         {
           text: "后端技术栈",
-          children: [
-            { text: "Java", link: "/blogs/back-end/java/" },
-          ],
+          children: [...backend],
           collapsible: false
         },
         {
