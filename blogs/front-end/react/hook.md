@@ -59,11 +59,12 @@ export default function () {
 }
 ```
 总结：useState可以解成react之外的空间的状态，在向react内部通知的一个方式。其实是一个dispatch函数，为什么呢? 以为它其是在派发。
-- useEffect
+- **useEffect**
 > 这个hook是当react的渲染的时候，这个hook的函数会根据依赖变化而发生调用。
 这个方法一开始都会执行一次，可以用来做什么？当做它的一个组件的一个挂载的一个生命周期和的一个钩子来用。
 不能写在if等条件语句下，原因其实是react通过它对这个组件的声明，就像声明这个组件拥有什么样的功能一样。
-- useRef
+`useEffect`将渲染之外的事情收敛，集中管理。
+- **useRef**
 > useRef hook 是React提供的一个用于在函数组件中创建可变的引用的hook。它返回一个可变的ref对象，该对象的current属性被初始化为传入的参数。useRef主要用于在函数组件中保存持久化的值，这些值可以在多次渲染之间保持不变。
 ```ts
 import React, { useRef } from 'react';
@@ -82,8 +83,127 @@ function TextInputWithFocusButton() {
     </div>
   );
 }
+// 思考下面程序中：
 
+function foo() {
+  const x = useRef(1)
+  const y = useRef(2)
+}
+// x的值通过引用对象被保存了下，这个引用对象在哪里？
+// 在React的虚拟DOM对象上，useRef保证了什么？
 ```
-- useMemo
+`useRef`保证如果是：
+1. 相同的虚拟DOM对象（比如foo可以被多个虚拟DOM对象使用）
+2. 相同的位置的useRef(比如上面程序中x,y是不同位置的useRef)
+useRef帮助我们在一个闭包内缓存per instance, per location的数据。
+如果想要根据某种依赖关系更新X，就需要这样做
+```ts
+function foo() {
+  const x = useRef(1)
+  useEffect(() => {
+    x.current ++     // 更新x的逻辑
+  }, [someDeps])
+}
+// 如果使用useMemo就得到简化了
+function foo() {
+  const x = useMemo(() => {
+    // 重新更新x的逻辑
+  }, [deps])
+}
+```
+- **useMemo**
+> 允许我们在闭包内根据依赖缓存数据。本质是在依赖发生变化的时候，通知React具体的VirtualDOM实例更新自己内部useMemo对应的状态。
+useMemo和useHook非常相似，useHook帮助函数组件在它的多次调用间同步实例数据。
+
+useMemo的优化及使用真实场景：
+1.缓存对象(最大价值)
+```ts
+const node = useMemo<DragNode>(() => new DragNode(), [])
+```
+2.实现复杂的计算逻辑(微优化)
+```ts
+function complexComputation(a,b,c) {...}
+const result = useMemo( () => complexComputation(a,b,c), [a,b,c])
+```
+3. 利用useMemo优化,让子组件永不更新（微优化）
+```ts
+function ParentComponent(props) {
+  return useMemo(
+    () => <ChildComponent someProp = {props.someProp}/>,
+    [props.someProp]
+  )
+}
+function ChildrenComponent() {
+  return <div>...</div>
+}
+```
 - useCallback
+官方文档中
+> `useCallback(fn,deps)` is equivalent to `useMemo(() => fn, deps)`
+**关于useMemo& useCallback的总结**
+> useMemo 和 useCallback 其实是两个低频能力。总体来说，它们和useRef能力相似的，都是闭包间同步一个 per virtualdom instance per loaction 的值。类似一个静态的，基于词法作用域的缓存。
+```ts
+// 这段程序是为了防止高频setState带来的组件高频刷新，用useThrottledState 代替useState
+function useThrottledState<T>(initialState: T, interval = 16) : 
+[T, (val : (T | (T =>T))) => void] {
+  const state = useRef<T>(initialState)
+  const [, setVer] = useState(0)
+
+  const setState = useMemo(() => {
+    const fn = (val: T | (() => T)) => {
+      if (isFunction(val)) {
+        val = val()
+      }
+      state.current = val
+      setVer(x => x + 1)
+    }
+    return throttle(fn, interval)
+  }, [])
+  return [state.current, setState]
+}
+// 用法，这样无论调用频率如何，最终刷新频率会在每100ms一次。
+const [x,setState] = useThrottledState(customData, 100)
+```
 - useContext
+这个Hook将父组件设置的上下文下发，是一种被高频使用，重要的技巧。
+>举个例子：
+```ts
+// 像这样很多组件都依赖的状态就可以用context下发
+class User {
+  loginStatus: UserStates
+   
+  public isLoggedIn() : boolen {
+    // ...
+  }
+  public onLoginStatusChanged(handler: Handler) {
+    ...
+  }
+}
+```
+```ts
+import { createContext } from "react"
+import User from './User';
+
+const UserContext = createContext(new User())
+
+export default UserContext
+```
+```ts
+import { useContext } from "react";
+import User from "./User";
+import UserContext from './UserContext'
+
+export default () => {
+  const user = useContext(UserContext)
+
+  return <UserContext.Provider value={user}>
+    <FooComponent></FooComponent>
+  </UserContext.Provider>
+}
+
+const FooComponent = () => {
+  const context = useContext(UserContext)
+  return <div>{ context.name }</div>
+}
+```
+**Context仅仅用于组件间共享的上下文类信息。什么是上下文类，就是系统设计中大部分组件都需要依赖的数据。**
