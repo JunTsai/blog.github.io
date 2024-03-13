@@ -1,0 +1,1 @@
+import{_ as o,r,o as t,c as a,a as e,b as c,d as s}from"./app-A7gWX81E.js";const l={},_={href:"/blogs/reading/cxl/",target:"_blank",rel:"noopener noreferrer"};function d(i,f){const n=r("ExternalLinkIcon");return t(),a("div",null,[e("p",null,[e("a",_,[c("王阳明-传习录"),s(n)])])])}const m=o(l,[["render",d],["__file","index.html.vue"]]);export{m as default};

@@ -1,0 +1,1 @@
+import{_ as n,r as o,o as r,c as a,a as e,d as c,w as l,b as s}from"./app-A7gWX81E.js";const i={};function _(d,u){const t=o("RouterLink");return r(),a("div",null,[e("ul",null,[e("li",null,[c(t,{to:"/blogs/front-end/engineering/vite/cp1.html"},{default:l(()=>[s("了解vite")]),_:1})])])])}const m=n(i,[["render",_],["__file","index.html.vue"]]);export{m as default};
