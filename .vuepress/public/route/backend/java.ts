@@ -2,7 +2,7 @@ const java = {
   text: "java",
   children: [
     {
-      text: "webpack4一些总结",
+      text: "设计原则",
       link: "/blogs/back-end/java/model"
     },
   ],
