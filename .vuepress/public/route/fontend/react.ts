@@ -8,11 +8,11 @@ const Vue2 = {
     },
     {
       text: "Hook的理解",
-      link: "/blogs/front-end/react/component"
+      link: "/blogs/front-end/react/hook"
     },
     {
       text: "封装组件",
-      link: "/blogs/front-end/react/hook"
+      link: "/blogs/front-end/react/component"
     },
   ],
 }
