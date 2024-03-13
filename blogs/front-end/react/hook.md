@@ -207,3 +207,40 @@ const FooComponent = () => {
 }
 ```
 **Context仅仅用于组件间共享的上下文类信息。什么是上下文类，就是系统设计中大部分组件都需要依赖的数据。**
+
+### 几个用Hooks的小技巧
+1. 不能用 Hooks + 控制流
+```js
+if (...) {
+  useEffect(() => {
+
+  }, [])
+}
+```
+Hooks是对行为的声明，if-else是分支控制，不是声明的一部分。从理论上不应有声明在控制流之下。在React内部通过Hooks的词法顺序来区分不同的Hook。
+
+2. Stackoverflow
+
+```js
+//如果操作不慎，可能会导致StackOverflow
+// 下面会代码会一直刷新，无限循环。
+const [s, setS] = useState(0)
+useEffect(() => {
+  setS(x => x + 1)
+}, [s])
+```
+
+3. Effect的注销
+如果一个effect中监听了事件，或者发送了请求，但是有时候在事件响应，请求返回后，组件已经被销毁了，因此要注意手动注销在effect中使用的资源。
+```ts
+useEffect(() => {
+  const unsub = editor.on('some-evnt', () => {
+
+  })
+  return () => {}
+}, [])
+```
+
+4. 多状态更新
+多状态更新是，到底用多个useState还是合并用一个大的呢?
+没有必须用多个state还是一个对象，要看具体的场景，通常一个useState要解决一类问题。

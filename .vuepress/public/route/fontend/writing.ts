@@ -13,7 +13,11 @@ const writing = {
     {
       text: "小程序框架原理",
       link: "/blogs/front-end/writing/miniprogress"
-    }
+    },
+    {
+      text: "http一些概念",
+      link: "/blogs/front-end/writing/http"
+    },
   ],
 }
 
