@@ -1,0 +1,11 @@
+### 总结
+
+在对一个项目进行配置时，最好按照环境来划分，开发环境配置一份文件，生产环境配置一份文件，这两份文件共用的配置抽出来成为一份。
+共用的文件里面，配置好常用module的规则，css规则解析，js的babel解析，图片的解析等。插件一般配置html模板插件，共用的入口文件，打包输出文件。
+
+接下来对开发环境的配置做一个开发的优化，比如css规则用style-loader，
+开发环境配置一份dll配置，利于模块预编译。
+
+生产环境上的配置优化，css解析可以用minicssextractplugin,打css代码进行打包处理，生成link链接插入html中，可以开启optimization参数，配置里面splitchunks: 开启chunks的all的属性，配置cachegroups；对nodemodule模块进行拆分，和src目录下文件进行分组拆分，此项配置为了利用浏览器缓存机制。然后开启代码压缩；配置代码压缩，利用
+
+然后我之前开发过一个打包优化插件，该插件对webpack打包后的代码进行版本管理，跟缓存优化。实现的逻辑就是在webpack的apply方法调用complier对象，注册一个钩子，这个钩子的就是读取入口模块的chunks,利用node中crypto模块为每个chunk生成一个唯一的hash值。
